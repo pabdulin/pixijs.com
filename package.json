@@ -15,7 +15,7 @@
         "prettify": "prettier --write .",
         "serve": "docusaurus serve",
         "prestart": "npm run write-example-docs",
-        "start": "cross-env PIXI_VERSION=dev docusaurus start",
+        "start": "docusaurus start",
         "swizzle": "docusaurus swizzle",
         "types": "tsc --noEmit",
         "write-heading-ids": "docusaurus write-heading-ids",

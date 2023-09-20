@@ -4,17 +4,7 @@ const { compareVersions } = require('compare-versions');
 // async iife
 (async () =>
 {
-    const devCommitSha = process.argv.slice(2)[0];
-
-    if (!devCommitSha)
-    {
-        console.error('Script must be run with the commit SHA for the latest merged PR to pixijs/pixijs dev!');
-        process.exit(1);
-    }
-
     shell.exec('npm view pixi.js --json > scripts/pixiVersions.json');
-
-    const codeSandboxBaseUrl = `https://pkg.csb.dev/pixijs/pixijs/commit/${devCommitSha.substring(0, 8)}`;
 
     // eslint-disable-next-line global-require
     const pixiVersions = require('./pixiVersions.json');
@@ -103,16 +93,6 @@ const { compareVersions } = require('compare-versions');
             prerelease: true,
         });
     }
-
-    versions.push({
-        versionLabel: 'dev',
-        version: 'dev',
-        releaseNotes: 'https://github.com/pixijs/pixijs/releases',
-        build: 'https://pixijs.download/dev/pixi.min.js',
-        docs: 'https://pixijs.download/release/docs',
-        dev: true,
-        npm: codeSandboxBaseUrl,
-    });
 
     const versionsWithLatest = versions.map((version) =>
     {

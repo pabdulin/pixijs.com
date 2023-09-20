@@ -68,6 +68,15 @@ type UseDependenciesParams = {
 const useDependencies = ({ isPixiWebWorkerVersion, isPixiDevVersion, pixiVersion }: UseDependenciesParams) =>
     useMemo(() =>
     {
+        if (pixiVersion.startsWith('8'))
+        {
+            return {
+                dependenciesKey: `pixi.js-${pixiVersion}`,
+                dependencies: {
+                    'pixi.js': pixiVersion,
+                },
+            };
+        }
         const pixiPackageName = isPixiWebWorkerVersion ? '@pixi/webworker' : 'pixi.js';
         const getPackageVersion = (packageName: string) =>
             (isPixiDevVersion ? `${pixiVersion}/${packageName}` : pixiVersion);

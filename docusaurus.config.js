@@ -14,7 +14,7 @@ const config = {
     favicon: 'images/favicon.png',
 
     customFields: {
-        PIXI_VERSION: process.env.PIXI_VERSION || 'dev',
+        PIXI_VERSION: process.env.PIXI_VERSION || 'latest',
     },
 
     // GitHub pages deployment config.
